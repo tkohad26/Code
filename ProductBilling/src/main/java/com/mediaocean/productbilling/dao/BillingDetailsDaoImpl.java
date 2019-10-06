@@ -17,7 +17,7 @@ public class BillingDetailsDaoImpl implements BillingDetailsDao {
 	@Override
 	public List<Object[]> getBillDetails(Long transId) {
 		// TODO Auto-generated method stub
-		List<Object[]> result = repoTrans.getTransactionDetails();
+		List<Object[]> result = repoTrans.getTransactionDetails(transId);
 		
 		//System.out.println("--->> "+result.toString());
 		

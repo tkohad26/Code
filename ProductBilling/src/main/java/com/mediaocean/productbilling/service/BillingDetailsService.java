@@ -24,6 +24,7 @@ public class BillingDetailsService {
 		List<Products> list=new ArrayList<Products>();
 		float total=0;
 		float totalTax=0;
+		long id=1L;
 		for(Object[] x: result) {
 			Products p1=new Products();
 			//select pd.productname,pd.productcategory,pd.price,p.quantity,
@@ -32,7 +33,7 @@ public class BillingDetailsService {
 			p1.setProductcategory(x[1].toString());
 			//p1.setPrice(((BigInteger)x[2]).intValue());
 			p1.setQuantity((Integer)x[3]);
-			p1.setId(1L);
+			p1.setId(id++);
 			//long tempPrice=(Long)();
 			float tempPrice=((Double)x[2]).floatValue();
 			tempPrice=tempPrice * ((Integer)x[3]).floatValue();

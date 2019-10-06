@@ -54,8 +54,8 @@ public class App implements CommandLineRunner {
 		
 		Purchases p1=new Purchases(1,10,1,10);
 		Purchases p2=new Purchases(1,9,1,5);
-		Purchases p3=new Purchases(1,15,1,18);
-		Purchases p4=new Purchases(2,15,1,218);
+		Purchases p3=new Purchases(1,5,1,18);
+		Purchases p4=new Purchases(2,8,1,8);
 		
 		repoTrans.save(p1);
 		repoTrans.save(p2);

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,11 +18,11 @@ public class BillingControler {
 	@Autowired
 	BillingDetailsService billService;
 	
-	@GetMapping("/getDetails")
-	public BillDetailsVo getDetails() {
+	@GetMapping("/getDetails/{trnsId}")
+	public BillDetailsVo getDetails(@PathVariable("trnsId") long trnsId) {
 		
-		
-		return billService.getBillDetailsService(1L);
+		System.out.println("Trans Id ********************** "+trnsId);
+		return billService.getBillDetailsService(trnsId);
 		
 	}
 

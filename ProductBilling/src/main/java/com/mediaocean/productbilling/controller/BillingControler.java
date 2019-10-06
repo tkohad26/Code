@@ -3,6 +3,8 @@ package com.mediaocean.productbilling.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,10 +21,11 @@ public class BillingControler {
 	BillingDetailsService billService;
 	
 	@GetMapping("/getDetails/{trnsId}")
-	public BillDetailsVo getDetails(@PathVariable("trnsId") long trnsId) {
+	public ResponseEntity<BillDetailsVo> getDetails(@PathVariable("trnsId") long trnsId) {
 		
 		System.out.println("Trans Id ********************** "+trnsId);
-		return billService.getBillDetailsService(trnsId);
+		return new ResponseEntity<BillDetailsVo>(billService.getBillDetailsService(trnsId),HttpStatus.OK);
+		//return ;
 		
 	}
 

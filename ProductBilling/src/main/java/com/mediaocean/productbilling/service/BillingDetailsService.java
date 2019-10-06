@@ -4,12 +4,15 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.TransactionalException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mediaocean.productbilling.Vo.BillDetailsVo;
 import com.mediaocean.productbilling.dao.BillingDetailsDaoImpl;
 import com.mediaocean.productbilling.entities.Products;
+import com.mediaocean.productbilling.exception.TransactionNotFound;
 
 @Service
 public class BillingDetailsService {
@@ -19,6 +22,10 @@ public class BillingDetailsService {
 	public BillDetailsVo getBillDetailsService(Long transId) {
 		
 		List<Object[]> result = billing.getBillDetails(transId);
+		if(result.size() <=0) {
+			throw new TransactionNotFound();
+		}
+		
 		BillDetailsVo vo =new BillDetailsVo();
 	
 		List<Products> list=new ArrayList<Products>();
